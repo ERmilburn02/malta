@@ -29,6 +29,9 @@
   {{range $stylesheet := .Stylesheets}}
   <link rel="stylesheet" href="{{$stylesheet}}" />
   {{end}}
+
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js"></script>
 </head>
 
 <body>
@@ -102,6 +105,7 @@
         {{else}}
         <a href="/" id="sidebar-title">{{.Name}}</a>
         {{end}}
+        <div id="search"></div>
         <nav id="sidebar-nav">
           {{range $section := .NavSections}}
           <section>
@@ -150,5 +154,10 @@
           .getElementById("toggle-mobile-menu-button-menu-icon")
           .classList.remove("hidden");
       }
+    });
+</script>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
     });
 </script>
